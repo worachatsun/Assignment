@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { FaSearch, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
 
-class Header extends Component{
+class TopBar extends Component{
     render() {
         return (
             <HeaderDiv>
@@ -14,10 +14,10 @@ class Header extends Component{
                 </div>
                 <div>
                     <IconGroup>
-                        <FaShoppingCart />
-                        <FaInbox />
-                        <FaBolt />
-                        <FaUser />
+                        <FaShoppingCart fill={'#ddd'} />
+                        <FaInbox fill={'#ddd'} />
+                        <FaBolt fill={'#ddd'} />
+                        <FaUser fill={'#ddd'} />
                     </IconGroup>
                 </div>
             </HeaderDiv>
@@ -50,4 +50,4 @@ const SearchInput = styled.input`
     background-color: #f2f2f2;
 `
 
-export default Header
+export default TopBar

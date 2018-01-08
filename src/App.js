@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Header from './commons/Header'
+import LeftMenu from './commons/LeftMenu'
 
 class App extends Component {
   render() {
     return (
-      <Header />
+      <LeftMenu />
     )
   }
 }
