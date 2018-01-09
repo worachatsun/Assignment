@@ -11,9 +11,11 @@ class LeftMenu extends Component {
                 <MenuButton>Password</MenuButton>
                 <MenuButton>Notifications</MenuButton>
                 <MenuButton>Connected Accounts</MenuButton>
+                <SepSection/>
                 <MenuButton>Orders</MenuButton>
                 <MenuButton>Payment</MenuButton>
                 <MenuButton>Shipping</MenuButton>
+                <SepSection/>
                 <MenuButton>Credits & Referrals</MenuButton>
             </Container>
         )
@@ -37,6 +39,11 @@ const MenuButton = styled.div`
         font-weight: bold;
         background-color: #ddd;
     }
+`
+
+const SepSection = styled.div`
+    border-bottom: 1px solid #ddd;
+    margin: 0 10px 0 10px;
 `
 
 export default LeftMenu
