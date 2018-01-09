@@ -10,11 +10,29 @@ class EditPreferencesComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            dropdown: false
+            dropdown: false,
+            language: '',
+            timezone: '',
+            currency: '',
+            profileVisibility: '',
+            message: '',
+            category: ''
         }
     }
 
+    setLanguage(data) {
+        this.setState({language: data})
+    }
+
+    setCurrency(data) {
+        this.setState({currency: data})
+    }
+
+    setTimezone(data) {
+        this.setState({timezone: data})
+    }
     render() {
+        console.log(this.state)
         return (
             <div>
                 <TopBar/>
@@ -29,12 +47,13 @@ class EditPreferencesComponent extends Component {
                             <Section left color={'#6F727D'}>Localization</Section>
                             <Section>
                                 <Text>Language</Text>
-                                <Dropdown value={languages}/>
+                                <Dropdown value={languages} setData={this.setLanguage.bind(this)}/>
                                 <Text em={0.8} color={'#C2C4CB'}  weight={'regular'}>Interested in helping translate Fancy? <span style={{color: '#527FB7'}}>Let us know.</span></Text>
+                                <br/>
                                 <Text>Time zone</Text>
-                                <Dropdown value={timezones}/>
+                                <Dropdown value={timezones} setData={this.setTimezone.bind(this)}/>
                                 <Text>Currency</Text>
-                                <Dropdown value={currencies}/>
+                                <Dropdown value={currencies} setData={this.setCurrency.bind(this)}/>
                             </Section>
                         </SectionDiv>
                             <SepSection/>
@@ -44,15 +63,15 @@ class EditPreferencesComponent extends Component {
                                 <Text>Profile visibility</Text> 
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Manage who can see your activity, things you fancy, your followers, people you follow or in anyone's search results.</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'profile_vis'}  style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
-                                    <input type={'radio'} name={'profile_vis'}  style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>Private</Text>
+                                    <input type={'radio'} name={'profile_vis'} checked={this.state.profileVisibility==='Everyone'?true:false} onChange={data => {this.setState({profileVisibility: data.target.value})}} value={'Everyone'} style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
+                                    <input type={'radio'} name={'profile_vis'} checked={this.state.profileVisibility==='Private'?true:false} onChange={data => {this.setState({profileVisibility: data.target.value})}} value={'Private'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>Private</Text>
                                 </RadioDiv>
                                 <Text>Messages</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Control who can send you messages.</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
-                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>People you follow</Text>
-                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>No one</Text>
+                                    <input type={'radio'} name={'message'} checked={this.state.message==='Everyone'?true:false} onChange={data => {this.setState({message: data.target.value})}} value={'Everyone'} style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
+                                    <input type={'radio'} name={'message'} checked={this.state.message==='People you follow'?true:false} onChange={data => {this.setState({message: data.target.value})}} value={'People you follow'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>People you follow</Text>
+                                    <input type={'radio'} name={'message'} checked={this.state.message==='No one'?true:false} onChange={data => {this.setState({message: data.target.value})}} value={'No one'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>No one</Text>
                                 </RadioDiv>
                                 <Text>Recently viewed</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Manage your Fancy browsing history.</Text>
@@ -66,8 +85,8 @@ class EditPreferencesComponent extends Component {
                                 <Text>Category lists</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Automatically add Fancy'd items to the Category list</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'category'}  style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Enable</Text>
-                                    <input type={'radio'} name={'category'}  style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Disable</Text>
+                                    <input type={'radio'} name={'category'} checked={this.state.category==='Enable'?true:false} onChange={data => {this.setState({category: data.target.value})}} value={'Enable'}  style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Enable</Text>
+                                    <input type={'radio'} name={'category'} checked={this.state.category==='Disable'?true:false} onChange={data => {this.setState({category: data.target.value})}} value={'Disable'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Disable</Text>
                                 </RadioDiv>
                             </Section>
                         </SectionDiv>

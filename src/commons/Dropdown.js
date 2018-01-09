@@ -7,7 +7,7 @@ export default class Dropdown extends Component {
         super(props)
         this.state = {
             dropdownActive: false,
-            dropdownValue: 'Choose'
+            dropdownValue: this.props.value[0]
         }
     }
 
@@ -16,6 +16,7 @@ export default class Dropdown extends Component {
             dropdownValue: value,
             dropdownActive: !this.state.dropdownActive
         })
+        this.props.setData(value)
     }
 
     render() {
@@ -33,9 +34,9 @@ export default class Dropdown extends Component {
 }
 
 const menu = (data = [], setDropdownValue) => (
-    <div style={{backgroundColor: 'red', position: 'absolute'}}>
+    <DropdownList>
         {data.map((value, index) => <DropdownContent onClick={() => setDropdownValue(value)} key={index}>{value}</DropdownContent>)}
-    </div>
+    </DropdownList>
 )
 
 const DropdownContainer = styled.div`
@@ -51,6 +52,18 @@ const DropdownContent = styled.div`
     justify-content: space-between;
     padding: 0 4px 0 4px;
     font-size: 0.9em;
+    &:hover {
+        background-color: #ddd;
+    }
+`
+
+const DropdownList = styled.div`
+    background-color: #F8F8F8;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    max-height: 160px;
+    padding: 12px 16px;
+    overflow-y: scroll;
 `
 
 // const DropdownContent = styled.div`
