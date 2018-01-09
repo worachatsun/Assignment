@@ -26,28 +26,39 @@ export default class Dropdown extends Component {
                         {this.state.dropdownValue}{this.state.dropdownActive?<FaCaretUp/>:<FaCaretDown/>}
                     </DropdownContent>
                 </div>
-                {this.state.dropdownActive?menu(null, this.setDropdownValue.bind(this)):''}
+                {this.state.dropdownActive?menu(this.props.value, this.setDropdownValue.bind(this)):''}
             </DropdownContainer>
         )
     }
 }
 
-const menu = (data, setDropdownValue) => (
-    <div>
-        <div onClick={() => setDropdownValue('sun')}>First Item</div>
-        <div onClick={() => setDropdownValue('sss')}>First Item</div>
+const menu = (data = [], setDropdownValue) => (
+    <div style={{backgroundColor: 'red', position: 'absolute'}}>
+        {data.map((value, index) => <DropdownContent onClick={() => setDropdownValue(value)} key={index}>{value}</DropdownContent>)}
     </div>
 )
 
 const DropdownContainer = styled.div`
-    width: 150px;
+    width: 100%;
     background-color: #F8F8F8;
     border: 1px solid #D1D5D7;
     border-radius: 2px;
+    margin: 5px 0 13px 0;
 `
 const DropdownContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 4px 0 4px;
+    font-size: 0.9em;
 `
+
+// const DropdownContent = styled.div`
+//     display: ${props => props.drop?'block':'none'};
+//     position: absolute;
+//     background-color: #f9f9f9;
+//     min-width: 160px;
+//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//     padding: 12px 16px;
+//     z-index: 1;
+// `

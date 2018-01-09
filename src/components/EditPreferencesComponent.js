@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import TopBar from '../commons/TopBar'
 import LeftMenu from '../commons/LeftMenu'
 import { FaLock } from 'react-icons/lib/fa'
+import Dropdown from '../commons/Dropdown'
+import { languages, timezones, currencies } from '../assets/resource'
 
 class EditPreferencesComponent extends Component {
     constructor(props) {
@@ -27,27 +29,12 @@ class EditPreferencesComponent extends Component {
                             <Section left color={'#6F727D'}>Localization</Section>
                             <Section>
                                 <Text>Language</Text>
-                                <Dropdown onClick={() => this.setState({dropdown: !this.state.dropdown})}>
-                                    <span>aa</span>
-                                    <DropdownContent drop={this.state.dropdown}>
-                                        aa
-                                    </DropdownContent>
-                                </Dropdown>
+                                <Dropdown value={languages}/>
                                 <Text em={0.8} color={'#C2C4CB'}  weight={'regular'}>Interested in helping translate Fancy? <span style={{color: '#527FB7'}}>Let us know.</span></Text>
                                 <Text>Time zone</Text>
-                                <Dropdown onClick={() => this.setState({dropdown: !this.state.dropdown})}>
-                                    <span>aa</span>
-                                    <DropdownContent drop={this.state.dropdown}>
-                                        aa
-                                    </DropdownContent>
-                                </Dropdown>
+                                <Dropdown value={timezones}/>
                                 <Text>Currency</Text>
-                                <Dropdown onClick={() => this.setState({dropdown: !this.state.dropdown})}>
-                                    <span>aa</span>
-                                    <DropdownContent drop={this.state.dropdown}>
-                                        aa
-                                    </DropdownContent>
-                                </Dropdown>
+                                <Dropdown value={currencies}/>
                             </Section>
                         </SectionDiv>
                             <SepSection/>
@@ -123,24 +110,6 @@ const SectionDiv = styled.div`
 const Section = styled.div`
     color: ${props => props.color || 'black'};
     width: ${props => props.left?'25%':'65%'};
-`
-
-const Dropdown = styled.div`
-    position: relative;
-    display: inline-block;
-    &:hover ${DropdownContent}{
-        display: block;
-    }
-`
-
-const DropdownContent = styled.div`
-    display: ${props => props.drop?'block':'none'};
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
 `
 
 const Text = styled.div`
