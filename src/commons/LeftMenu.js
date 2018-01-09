@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { MdLockOutline, MdLocalShipping, MdAccountCircle, MdViewModule } from 'react-icons/lib/md';
+import { FaCreditCard } from 'react-icons/lib/fa';
 
 export default class LeftMenu extends Component {
     render() {
         return (
             <Container>
-                <MenuButton>Edit Profile</MenuButton>
+                <MenuButton><MdAccountCircle />Edit Profile</MenuButton>
                 <MenuButton>Preferences</MenuButton>
-                <MenuButton>Password</MenuButton>
+                <MenuButton><MdLockOutline />Password</MenuButton>
                 <MenuButton>Notifications</MenuButton>
-                <MenuButton>Connected Accounts</MenuButton>
+                <MenuButton><MdViewModule />Connected Accounts</MenuButton>
                 <SepSection/>
                 <MenuButton>Orders</MenuButton>
-                <MenuButton>Payment</MenuButton>
-                <MenuButton>Shipping</MenuButton>
+                <MenuButton><FaCreditCard />Payment</MenuButton>
+                <MenuButton><MdLocalShipping />Shipping</MenuButton>
                 <SepSection/>
                 <MenuButton>Credits & Referrals</MenuButton>
             </Container>
@@ -22,7 +24,7 @@ export default class LeftMenu extends Component {
 }
 
 const Container = styled.div`
-    width: 20%;
+    width: 100%;
     color: #6F727D;
     border-radius: 2px;
     background-color: white;
@@ -32,6 +34,7 @@ const Container = styled.div`
 const MenuButton = styled.div`
     display: flex;
     flex: 1;
+    padding: 3px 0 7px 10px;
     align-items: center;
     height: 30px;
     font-size: 14px;

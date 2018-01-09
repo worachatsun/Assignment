@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import TopBar from '../commons/TopBar'
 import LeftMenu from '../commons/LeftMenu'
-import { FaLock } from 'react-icons/lib/fa';
+import { FaLock } from 'react-icons/lib/fa'
 
 class EditPreferencesComponent extends Component {
     constructor(props) {
@@ -17,7 +17,9 @@ class EditPreferencesComponent extends Component {
             <div>
                 <TopBar/>
                 <OuterContainer>
-                    <LeftMenu/>
+                    <div style={{width: '16%'}}>
+                        <LeftMenu/>
+                    </div>
                     <Container>
                         <div style={{fontWeight: 'bold', marginTop: 20, marginLeft: '2.3%', color: '#515C67'}}>Edit Preferences</div>
                         <SepSection/>
@@ -55,15 +57,15 @@ class EditPreferencesComponent extends Component {
                                 <Text>Profile visibility</Text> 
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Manage who can see your activity, things you fancy, your followers, people you follow or in anyone's search results.</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'profile_vis'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
-                                    <input type={'radio'} name={'profile_vis'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>Private</Text>
+                                    <input type={'radio'} name={'profile_vis'}  style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
+                                    <input type={'radio'} name={'profile_vis'}  style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>Private</Text>
                                 </RadioDiv>
                                 <Text>Messages</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Control who can send you messages.</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'message'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
-                                    <input type={'radio'} name={'message'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>People you follow</Text>
-                                    <input type={'radio'} name={'message'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>No one</Text>
+                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Everyone</Text>
+                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>People you follow</Text>
+                                    <input type={'radio'} name={'message'} style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}><FaLock/>No one</Text>
                                 </RadioDiv>
                                 <Text>Recently viewed</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Manage your Fancy browsing history.</Text>
@@ -77,8 +79,8 @@ class EditPreferencesComponent extends Component {
                                 <Text>Category lists</Text>  
                                 <Text em={0.8} color={'#C2C4CB'} weight={'regular'}>Automatically add Fancy'd items to the Category list</Text>
                                 <RadioDiv>
-                                    <input type={'radio'} name={'category'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Enable</Text>
-                                    <input type={'radio'} name={'category'}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Disable</Text>
+                                    <input type={'radio'} name={'category'}  style={{margin: '0 7px 0 0'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Enable</Text>
+                                    <input type={'radio'} name={'category'}  style={{margin: '0 7px 0 20px'}}/><Text em={0.8} color={'#6F727D'}  weight={'regular'}>Disable</Text>
                                 </RadioDiv>
                             </Section>
                         </SectionDiv>

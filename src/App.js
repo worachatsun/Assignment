@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import EditPreferencesComponent from './components/EditPreferencesComponent'
-import TopBar from './commons/TopBar'
+// import EditPreferencesComponent from './components/EditPreferencesComponent'
+import Dropdown from './commons/Dropdown'
 
 class App extends Component {
   render() {
     return (
-      <EditPreferencesComponent />
+      <Dropdown/>
+      // <EditPreferencesComponent />
     )
   }
 }
