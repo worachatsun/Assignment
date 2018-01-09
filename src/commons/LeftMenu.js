@@ -34,11 +34,10 @@ const Container = styled.div`
 const MenuButton = styled.div`
     display: flex;
     flex: 1;
-    padding: 3px 0 7px 10px;
+    padding: 5px 0 3px 15px;
     align-items: center;
     height: 30px;
     font-size: 14px;
-    padding-left: 5px;
     &:hover {
         font-weight: bold;
         background-color: #ddd;

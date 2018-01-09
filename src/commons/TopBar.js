@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FaSortDesc, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
+import { FaCaretDown, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
 
 export default class TopBar extends Component{
     render() {
@@ -19,7 +19,7 @@ export default class TopBar extends Component{
                         <FaBolt fill={'#92979D'} />
                         <FaUser fill={'#92979D'} />
                         <span style={{color: '#92979D', marginTop: 3, fontSize: 14, fontWeight: 'bold'}}>You</span>
-                        <FaSortDesc fill={'#92979D'}/>
+                        <FaCaretDown fill={'#92979D'}/>
                     </IconGroup>
                 </div>
             </HeaderDiv>

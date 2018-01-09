@@ -32,7 +32,6 @@ class EditPreferencesComponent extends Component {
         this.setState({timezone: data})
     }
     render() {
-        console.log(this.state)
         return (
             <div>
                 <TopBar/>
@@ -145,6 +144,7 @@ const Button = styled.button`
     font-size: 0.8em;
     font-family: 'Hind';
     font-weight: bold;
+    background-color: '#F8F8F8'
 `
 
 const RadioDiv = styled.div`
