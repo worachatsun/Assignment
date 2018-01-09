@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import EditPreferencesComponent from './components/EditPreferencesComponent'
+import RouterComponent from './config/RouterComponent'
 
 class App extends Component {
   render() {
     return (
-      <EditPreferencesComponent />
+      <RouterComponent />
     )
   }
 }

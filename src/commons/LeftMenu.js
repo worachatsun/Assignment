@@ -1,23 +1,25 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { MdLockOutline, MdLocalShipping, MdAccountCircle, MdViewModule } from 'react-icons/lib/md';
-import { FaCreditCard } from 'react-icons/lib/fa';
+import { MdLockOutline, MdLocalShipping, MdAccountCircle, MdGridOn, MdLocalAtm } from 'react-icons/lib/md'
+import { FaCreditCard } from 'react-icons/lib/fa'
+import { TiClipboard } from 'react-icons/lib/ti'
 
 export default class LeftMenu extends Component {
     render() {
         return (
             <Container>
-                <MenuButton><MdAccountCircle />Edit Profile</MenuButton>
-                <MenuButton>Preferences</MenuButton>
-                <MenuButton><MdLockOutline />Password</MenuButton>
+                <MenuButton><MdAccountCircle size={20} style={{marginRight: 8}}/>Edit Profile</MenuButton>
+                <MenuButton active={this.props.nowPath==='/'?true:false}><Link to="/" style={{textDecoration: 'none', color: '#6F727D'}}>Preferences</Link></MenuButton>
+                <MenuButton><MdLockOutline size={20} style={{marginRight: 8}}/>Password</MenuButton>
                 <MenuButton>Notifications</MenuButton>
-                <MenuButton><MdViewModule />Connected Accounts</MenuButton>
+                <MenuButton><MdGridOn size={20} style={{marginRight: 8}} />Connected Accounts</MenuButton>
                 <SepSection/>
-                <MenuButton>Orders</MenuButton>
-                <MenuButton><FaCreditCard />Payment</MenuButton>
-                <MenuButton><MdLocalShipping />Shipping</MenuButton>
+                <MenuButton><TiClipboard size={24} style={{marginRight: 8}} />Orders</MenuButton>
+                <MenuButton><FaCreditCard size={20} style={{marginRight: 8}} />Payment</MenuButton>
+                <MenuButton><MdLocalShipping size={20} style={{marginRight: 8}} />Shipping</MenuButton>
                 <SepSection/>
-                <MenuButton>Credits & Referrals</MenuButton>
+                <MenuButton><MdLocalAtm size={20} style={{marginRight: 8}} />Credits & Referrals</MenuButton>
             </Container>
         )
     }
@@ -38,6 +40,8 @@ const MenuButton = styled.div`
     align-items: center;
     height: 30px;
     font-size: 14px;
+    background-color: ${props => props.active?'#ddd':'white'};
+    font-weight: ${props => props.active?'bold':'regular'};
     &:hover {
         font-weight: bold;
         background-color: #ddd;

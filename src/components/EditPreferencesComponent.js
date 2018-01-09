@@ -37,7 +37,7 @@ class EditPreferencesComponent extends Component {
                 <TopBar/>
                 <OuterContainer>
                     <div style={{width: '16%'}}>
-                        <LeftMenu/>
+                        <LeftMenu nowPath={this.props.location.pathname}/>
                     </div>
                     <Container>
                         <div style={{fontWeight: 'bold', marginTop: 20, marginLeft: '2.3%', color: '#515C67'}}>Edit Preferences</div>
