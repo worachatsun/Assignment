@@ -14,10 +14,11 @@ export default class TopBar extends Component{
                 </HeaderText>
                 <div>
                     <IconGroup>
-                        <FaShoppingCart fill={'#ddd'} />
-                        <FaInbox fill={'#ddd'} />
-                        <FaBolt fill={'#ddd'} />
-                        <FaUser fill={'#ddd'} />
+                        <FaShoppingCart fill={'#92979D'} />
+                        <FaInbox fill={'#92979D'} />
+                        <FaBolt fill={'#92979D'} />
+                        <FaUser fill={'#92979D'} />
+                        <span style={{color: '#92979D', marginTop: 3, fontSize: 14, fontWeight: 'bold'}}>You</span>
                     </IconGroup>
                 </div>
             </HeaderDiv>
@@ -33,7 +34,8 @@ const MakeRowDiv = styled.div`
 `
 
 const IconGroup = MakeRowDiv.extend`
-    width: 170px;
+    align-items: center;
+    width: 160px;
 `
 
 const HeaderDiv = MakeRowDiv.extend`
@@ -54,5 +56,6 @@ const SearchInput = styled.input`
 const HeaderText = styled.div`
     font-family: 'Quicksand';
     font-size: 1.5em;
-    font-weight: bold
+    font-weight: bold;
+    color: #515C67;
 `
