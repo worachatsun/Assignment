@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { MdLockOutline } from 'react-icons/lib/md';
 
-class LeftMenu extends Component {
+export default class LeftMenu extends Component {
     render() {
         return (
             <Container>
@@ -23,8 +22,10 @@ class LeftMenu extends Component {
 }
 
 const Container = styled.div`
-    width: 300px;
+    width: 20%;
+    color: #6F727D;
     border-radius: 2px;
+    background-color: white;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 `
 
@@ -33,7 +34,7 @@ const MenuButton = styled.div`
     flex: 1;
     align-items: center;
     height: 30px;
-    font-size: 15px;
+    font-size: 14px;
     padding-left: 5px;
     &:hover {
         font-weight: bold;
@@ -45,5 +46,3 @@ const SepSection = styled.div`
     border-bottom: 1px solid #ddd;
     margin: 0 10px 0 10px;
 `
-
-export default LeftMenu

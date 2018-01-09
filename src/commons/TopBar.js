@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { FaSearch, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
 
-class TopBar extends Component{
+export default class TopBar extends Component{
     render() {
         return (
             <HeaderDiv>
                 <div>
                     <SearchInput placeholder={'Search Fancy'} />
                 </div>
-                <div>
+                <HeaderText>
                     FANCY
-                </div>
+                </HeaderText>
                 <div>
                     <IconGroup>
                         <FaShoppingCart fill={'#ddd'} />
@@ -38,6 +38,7 @@ const IconGroup = MakeRowDiv.extend`
 
 const HeaderDiv = MakeRowDiv.extend`
     align-items: center;
+    background-color: white;
     height: 48px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 `
@@ -50,4 +51,8 @@ const SearchInput = styled.input`
     background-color: #f2f2f2;
 `
 
-export default TopBar
+const HeaderText = styled.div`
+    font-family: 'Quicksand';
+    font-size: 1.5em;
+    font-weight: bold
+`

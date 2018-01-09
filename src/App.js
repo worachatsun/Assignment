@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import LeftMenu from './commons/LeftMenu'
+import EditPreferencesComponent from './components/EditPreferencesComponent'
+import TopBar from './commons/TopBar'
 
 class App extends Component {
   render() {
     return (
-      <LeftMenu />
+      <EditPreferencesComponent />
     )
   }
 }
