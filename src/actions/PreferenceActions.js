@@ -44,7 +44,7 @@ export const getPreference = _id => {
 export const deletePreference = _id => {
     return async dispatch => {
         try {
-            const result = await axios.post(POST_DELETE_PREFER_BY_ID, {
+            await axios.post(POST_DELETE_PREFER_BY_ID, {
                 _id
             })
             dispatch({

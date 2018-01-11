@@ -3,9 +3,9 @@ import { STORE_PREFERENCE, DELETE_PREFERENCE } from '../actions/types'
 
 const INITIAL_STATE = Map({
     preference: {
-        language: '',
-        timezone: '',
-        currency: '',
+        language: 'English',
+        timezone: '(UTC+00:00) El Aaiun',
+        currency: 'USD ($)',
         profileVisibility: 'Everyone',
         message: 'Everyone',
         category: 'Enable',

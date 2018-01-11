@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { MdLockOutline, MdLocalShipping, MdAccountCircle, MdGridOn, MdLocalAtm } from 'react-icons/lib/md'
+import { MdLockOutline, MdLocalShipping, MdAccountCircle, MdGridOn, MdLocalAtm, MdNotifications, MdAssignment } from 'react-icons/lib/md'
 import { FaCreditCard } from 'react-icons/lib/fa'
 import { TiClipboard } from 'react-icons/lib/ti'
 
@@ -10,9 +10,9 @@ export default class LeftMenu extends Component {
         return (
             <Container>
                 <MenuButton><MdAccountCircle size={20} style={{marginRight: 8}}/>Edit Profile</MenuButton>
-                <MenuButton active={this.props.nowPath==='/'?true:false}><Link to="/" style={{textDecoration: 'none', color: '#6F727D'}}>Preferences</Link></MenuButton>
+                <MenuButton active={this.props.nowPath==='/'?true:false}><MdAssignment size={20} style={{marginRight: 8}} /><Link to="/" style={{textDecoration: 'none', color: '#6F727D'}}>Preferences</Link></MenuButton>
                 <MenuButton><MdLockOutline size={20} style={{marginRight: 8}}/>Password</MenuButton>
-                <MenuButton>Notifications</MenuButton>
+                <MenuButton><MdNotifications size={20} style={{marginRight: 8}} />Notifications</MenuButton>
                 <MenuButton><MdGridOn size={20} style={{marginRight: 8}} />Connected Accounts</MenuButton>
                 <SepSection/>
                 <MenuButton><TiClipboard size={24} style={{marginRight: 8}} />Orders</MenuButton>

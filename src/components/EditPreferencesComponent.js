@@ -13,9 +13,9 @@ class EditPreferencesComponent extends Component {
         super(props)
         this.state = {
             dropdown: false,
-            language: '',
-            timezone: '',
-            currency: '',
+            language: 'English',
+            timezone: '(UTC+00:00) El Aaiun',
+            currency: 'USD ($)',
             profileVisibility: 'Everyone',
             message: 'Everyone',
             category: 'Enable',
@@ -36,6 +36,19 @@ class EditPreferencesComponent extends Component {
                 category
             })
         }
+    }
+
+    async resetPreference() {
+        await this.props.deletePreference(this.props.preference._id)
+        const {language, timezone, currency, profileVisibility, message, category} = this.props.preference
+        await this.setState({
+            language, 
+            timezone, 
+            currency, 
+            profileVisibility, 
+            message, 
+            category
+        })
     }
 
     setLanguage(data) {
@@ -65,13 +78,13 @@ class EditPreferencesComponent extends Component {
                             <Section left color={'#6F727D'}>Localization</Section>
                             <Section>
                                 <Text>Language</Text>
-                                <Dropdown value={languages} setData={this.setLanguage.bind(this)}/>
+                                <Dropdown displayValue={this.state.language} value={languages} setData={this.setLanguage.bind(this)}/>
                                 <Text em={0.8} color={'#C2C4CB'}  weight={'regular'}>Interested in helping translate Fancy? <span style={{color: '#527FB7'}}>Let us know.</span></Text>
                                 <br/>
                                 <Text>Time zone</Text>
-                                <Dropdown value={timezones} setData={this.setTimezone.bind(this)}/>
+                                <Dropdown displayValue={this.state.timezone} value={timezones} setData={this.setTimezone.bind(this)}/>
                                 <Text>Currency</Text>
-                                <Dropdown value={currencies} setData={this.setCurrency.bind(this)}/>
+                                <Dropdown displayValue={this.state.currency} value={currencies} setData={this.setCurrency.bind(this)}/>
                             </Section>
                         </SectionDiv>
                             <SepSection/>
@@ -113,7 +126,7 @@ class EditPreferencesComponent extends Component {
                         <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end', margin: '0 15px 15px 0'}}>
                             {this.props.havePreference?
                                 <div>
-                                    <Button fontColor={'white'} color={'red'} onClick={() => this.props.deletePreference(this.props.preference._id)}>Delete Preferences</Button>
+                                    <Button fontColor={'white'} color={'red'} onClick={() => this.resetPreference()}>Delete Preferences</Button>
                                     <Button onClick={() => this.props.updatePreference(this.state)}>Edit Preferences</Button>
                                 </div>
                             :
