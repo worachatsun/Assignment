@@ -48,6 +48,13 @@ export const checkUser = () => {
     }
 }
 
+export const signOut = () => dispatch => {
+    localStorage.clear()
+    return dispatch({
+        type: USER_LOGOUT
+    })
+}
+
 export const saveUserData = user => {
     return {
         type: GET_USER_DATA,

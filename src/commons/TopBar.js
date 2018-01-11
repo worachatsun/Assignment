@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FaCaretDown, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
+import { connect } from 'react-redux'
+import { signOut } from '../actions'
+import { FaCaretDown, FaUser, FaShoppingCart, FaInbox, FaBolt, FaSignOut } from 'react-icons/lib/fa';
 
-export default class TopBar extends Component{
+class TopBar extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            dropdown: false
+        }
+    }
+
     render() {
         return (
             <HeaderDiv>
@@ -26,7 +35,16 @@ export default class TopBar extends Component{
                             <FaBolt fill={'#92979D'} />
                             <FaUser fill={'#92979D'} />
                             <span style={{color: '#92979D', marginTop: 3, fontSize: 14, fontWeight: 'bold'}}>You</span>
-                            <FaCaretDown fill={'#92979D'}/>
+                            <Dropdown onClick={() => this.setState({dropdown: !this.state.dropdown})}>
+                                <FaCaretDown fill={'#92979D'}/>
+                                {this.state.dropdown?
+                                    <DropdownContent>
+                                        <div onClick={() => this.props.signOut()}><FaSignOut style={{marginRight: 10}}/>Sign out</div>
+                                    </DropdownContent>
+                                :
+                                    ''
+                                }
+                            </Dropdown>
                         </IconGroup>
                     }
                 </div>
@@ -34,6 +52,8 @@ export default class TopBar extends Component{
         )
     }
 }
+
+export default connect(null, { signOut })(TopBar)
 
 const MakeRowDiv = styled.div`
     display: flex;
@@ -69,11 +89,16 @@ const HeaderText = styled.div`
     color: #515C67;
 `
 
-const DropdownContent = styled.div`
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-`
+const Dropdown = styled.div`
+     position: relative;
+     display: inline-block;
+ `
+
+ const DropdownContent = styled.div`
+     position: absolute;
+     background-color: #f9f9f9;
+     min-width: 100px;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+     padding: 12px 16px;
+     z-index: 1;
+ `
