@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import EditPreferencesComponent from './components/EditPreferencesComponent'
+import { Provider } from 'react-redux'
+import { configureStore } from './store' 
+import RouterComponent from './config/RouterComponent'
 
 class App extends Component {
   render() {
     return (
-      <EditPreferencesComponent />
+      <Provider store={configureStore()}>
+        <RouterComponent />
+      </Provider>
     )
   }
 }

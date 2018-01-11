@@ -1,26 +1,34 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FaSortDesc, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
+import { FaCaretDown, FaUser, FaShoppingCart, FaInbox, FaBolt } from 'react-icons/lib/fa';
 
 export default class TopBar extends Component{
     render() {
         return (
             <HeaderDiv>
                 <div>
-                    <SearchInput placeholder={'Search Fancy'} />
+                    {this.props.noSideBar?
+                        ''
+                    :
+                        <SearchInput placeholder={'Search Fancy'} />
+                    }
                 </div>
                 <HeaderText>
                     FANCY
                 </HeaderText>
                 <div>
-                    <IconGroup>
-                        <FaShoppingCart fill={'#92979D'} />
-                        <FaInbox fill={'#92979D'} />
-                        <FaBolt fill={'#92979D'} />
-                        <FaUser fill={'#92979D'} />
-                        <span style={{color: '#92979D', marginTop: 3, fontSize: 14, fontWeight: 'bold'}}>You</span>
-                        <FaSortDesc fill={'#92979D'}/>
-                    </IconGroup>
+                    {this.props.noSideBar?
+                        ''
+                    :
+                        <IconGroup>
+                            <FaShoppingCart fill={'#92979D'} />
+                            <FaInbox fill={'#92979D'} />
+                            <FaBolt fill={'#92979D'} />
+                            <FaUser fill={'#92979D'} />
+                            <span style={{color: '#92979D', marginTop: 3, fontSize: 14, fontWeight: 'bold'}}>You</span>
+                            <FaCaretDown fill={'#92979D'}/>
+                        </IconGroup>
+                    }
                 </div>
             </HeaderDiv>
         )
@@ -59,4 +67,13 @@ const HeaderText = styled.div`
     font-size: 1.5em;
     font-weight: bold;
     color: #515C67;
+`
+
+const DropdownContent = styled.div`
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 `

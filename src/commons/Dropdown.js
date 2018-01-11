@@ -7,8 +7,9 @@ export default class Dropdown extends Component {
         super(props)
         this.state = {
             dropdownActive: false,
-            dropdownValue: this.props.value[0]
+            dropdownValue: this.props.displayValue
         }
+        this.props.setData(this.props.value[0])
     }
 
     setDropdownValue(value) {
@@ -24,7 +25,7 @@ export default class Dropdown extends Component {
             <DropdownContainer>
                 <div onClick={() => this.setState({dropdownActive: !this.state.dropdownActive})}>
                     <DropdownContent>
-                        {this.state.dropdownValue}{this.state.dropdownActive?<FaCaretUp/>:<FaCaretDown/>}
+                        {this.props.displayValue}{this.state.dropdownActive?<FaCaretUp/>:<FaCaretDown/>}
                     </DropdownContent>
                 </div>
                 {this.state.dropdownActive?menu(this.props.value, this.setDropdownValue.bind(this)):''}
@@ -65,13 +66,3 @@ const DropdownList = styled.div`
     padding: 12px 16px;
     overflow-y: scroll;
 `
-
-// const DropdownContent = styled.div`
-//     display: ${props => props.drop?'block':'none'};
-//     position: absolute;
-//     background-color: #f9f9f9;
-//     min-width: 160px;
-//     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-//     padding: 12px 16px;
-//     z-index: 1;
-// `

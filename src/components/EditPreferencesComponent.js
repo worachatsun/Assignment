@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { createPreference, getPreference, deletePreference, updatePreference } from '../actions'
 import TopBar from '../commons/TopBar'
 import LeftMenu from '../commons/LeftMenu'
 import { FaLock } from 'react-icons/lib/fa'
@@ -11,13 +13,43 @@ class EditPreferencesComponent extends Component {
         super(props)
         this.state = {
             dropdown: false,
-            language: '',
-            timezone: '',
-            currency: '',
-            profileVisibility: '',
-            message: '',
-            category: ''
+            language: 'English',
+            timezone: '(UTC+00:00) El Aaiun',
+            currency: 'USD ($)',
+            profileVisibility: 'Everyone',
+            message: 'Everyone',
+            category: 'Enable',
+            _id: this.props.user._id
         }
+    }
+
+    async componentWillMount() {
+        await this.props.getPreference(this.props.user._id)
+        const {language, timezone, currency, profile_visibility, message, category} = this.props.preference
+        if(this.props.havePreference){
+            await this.setState({
+                language, 
+                timezone, 
+                currency, 
+                profileVisibility: profile_visibility, 
+                message, 
+                category
+            })
+        }
+    }
+
+    async resetPreference() {
+        await this.props.deletePreference(this.props.preference._id)
+        const {language, timezone, currency, profileVisibility, message, category} = this.props.preference
+        await this.setState({
+            language, 
+            timezone, 
+            currency, 
+            profileVisibility, 
+            message, 
+            category
+        })
+        alert('Deleted')
     }
 
     setLanguage(data) {
@@ -31,14 +63,14 @@ class EditPreferencesComponent extends Component {
     setTimezone(data) {
         this.setState({timezone: data})
     }
+
     render() {
-        console.log(this.state)
         return (
             <div>
                 <TopBar/>
                 <OuterContainer>
                     <div style={{width: '16%'}}>
-                        <LeftMenu/>
+                        <LeftMenu nowPath={this.props.location.pathname}/>
                     </div>
                     <Container>
                         <div style={{fontWeight: 'bold', marginTop: 20, marginLeft: '2.3%', color: '#515C67'}}>Edit Preferences</div>
@@ -47,13 +79,13 @@ class EditPreferencesComponent extends Component {
                             <Section left color={'#6F727D'}>Localization</Section>
                             <Section>
                                 <Text>Language</Text>
-                                <Dropdown value={languages} setData={this.setLanguage.bind(this)}/>
+                                <Dropdown displayValue={this.state.language} value={languages} setData={this.setLanguage.bind(this)}/>
                                 <Text em={0.8} color={'#C2C4CB'}  weight={'regular'}>Interested in helping translate Fancy? <span style={{color: '#527FB7'}}>Let us know.</span></Text>
                                 <br/>
                                 <Text>Time zone</Text>
-                                <Dropdown value={timezones} setData={this.setTimezone.bind(this)}/>
+                                <Dropdown displayValue={this.state.timezone} value={timezones} setData={this.setTimezone.bind(this)}/>
                                 <Text>Currency</Text>
-                                <Dropdown value={currencies} setData={this.setCurrency.bind(this)}/>
+                                <Dropdown displayValue={this.state.currency} value={currencies} setData={this.setCurrency.bind(this)}/>
                             </Section>
                         </SectionDiv>
                             <SepSection/>
@@ -92,7 +124,16 @@ class EditPreferencesComponent extends Component {
                         </SectionDiv>
                         <SepSection/>
                         <SepSection/>
-                        <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end', margin: '0 15px 15px 0'}}><Button>Save Preferences</Button></div>
+                        <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end', margin: '0 15px 15px 0'}}>
+                            {this.props.havePreference?
+                                <div>
+                                    <Button fontColor={'white'} color={'red'} onClick={() => this.resetPreference()}>Delete Preferences</Button>
+                                    <Button onClick={() => {this.props.updatePreference(this.state);alert('Saved')}}>Edit Preferences</Button>
+                                </div>
+                            :
+                                <Button onClick={() => {this.props.createPreference(this.state);alert('Saved')}}>Save Preferences</Button>
+                            }
+                        </div>
                     </Container>
                 </OuterContainer>
             </div>
@@ -141,10 +182,11 @@ const Button = styled.button`
     weught: 190px;
     border-radius: 4px;
     border: 1px solid #515C67;
-    color: #515C67;
+    color: ${props => props.fontColor || '#515C67'};
     font-size: 0.8em;
     font-family: 'Hind';
     font-weight: bold;
+    background-color: ${props => props.color || '#F8F8F8'}
 `
 
 const RadioDiv = styled.div`
@@ -154,4 +196,12 @@ const RadioDiv = styled.div`
     margin: 15px 0 15px 0;
 `
 
-export default EditPreferencesComponent
+const mapStateToProps = state => {
+    return { 
+        user: state.auth.get('user'),
+        preference: state.preference.get('preference'), 
+        havePreference: state.preference.get('havePreference') 
+    }
+}
+
+export default connect(mapStateToProps, { createPreference, getPreference, deletePreference, updatePreference })(EditPreferencesComponent)
