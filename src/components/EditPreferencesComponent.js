@@ -69,9 +69,9 @@ class EditPreferencesComponent extends Component {
             <div>
                 <TopBar/>
                 <OuterContainer>
-                    <div style={{width: '16%'}}>
+                    <OuterLeftDiv>
                         <LeftMenu nowPath={this.props.location.pathname}/>
-                    </div>
+                    </OuterLeftDiv>
                     <Container>
                         <div style={{fontWeight: 'bold', marginTop: 20, marginLeft: '2.3%', color: '#515C67'}}>Edit Preferences</div>
                         <SepSection/>
@@ -146,6 +146,9 @@ const OuterContainer = styled.div`
     flex: 1;
     justify-content: center;
     margin-top: 15px;
+    @media (max-width: 750px) {
+        flex-direction: column;
+    }
 `
 
 const Container = styled.div`
@@ -154,6 +157,10 @@ const Container = styled.div`
     background-color: white;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     margin-left: 20px;
+    margin-bottom: 20px;
+    @media (max-width: 750px) {
+        width: 90%;
+    }
 `
 
 const SepSection = styled.div`
@@ -194,6 +201,15 @@ const RadioDiv = styled.div`
     flex-direction: row;
     align-items: center;
     margin: 15px 0 15px 0;
+`
+
+const OuterLeftDiv = styled.div`
+    width: 16%;
+    @media (max-width: 750px) {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        width: 90%;
+    }
 `
 
 const mapStateToProps = state => {

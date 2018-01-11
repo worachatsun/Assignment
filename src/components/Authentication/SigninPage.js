@@ -36,7 +36,7 @@ class SigninPage extends Component {
                         </OuterContainer> 
                         <OuterContainer>
                             <Text>Password</Text>
-                            <Input type="text" placeholder={'Password'} onChange={e => this.setState({password: e.target.value})}/>
+                            <Input type="password" placeholder={'Password'} onChange={e => this.setState({password: e.target.value})}/>
                         </OuterContainer>
                         <OuterContainer>
                             <Text color={'red'}>{this.state.error!==''?this.state.error:''}</Text>
