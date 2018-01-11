@@ -25,7 +25,7 @@ class SigninPage extends Component {
     render() {
         return (
             <div>
-                <TopBar/>
+                <TopBar noSideBar/>
                 <OuterContainer>
                     <Container>
                         <div style={{fontWeight: 'bold', marginTop: 20, marginLeft: '2.3%', color: '#515C67'}}>Signin</div>

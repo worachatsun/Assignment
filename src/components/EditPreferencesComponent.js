@@ -49,6 +49,7 @@ class EditPreferencesComponent extends Component {
             message, 
             category
         })
+        alert('Deleted')
     }
 
     setLanguage(data) {
@@ -127,10 +128,10 @@ class EditPreferencesComponent extends Component {
                             {this.props.havePreference?
                                 <div>
                                     <Button fontColor={'white'} color={'red'} onClick={() => this.resetPreference()}>Delete Preferences</Button>
-                                    <Button onClick={() => this.props.updatePreference(this.state)}>Edit Preferences</Button>
+                                    <Button onClick={() => {this.props.updatePreference(this.state);alert('Saved')}}>Edit Preferences</Button>
                                 </div>
                             :
-                                <Button onClick={() => this.props.createPreference(this.state)}>Save Preferences</Button>
+                                <Button onClick={() => {this.props.createPreference(this.state);alert('Saved')}}>Save Preferences</Button>
                             }
                         </div>
                     </Container>
