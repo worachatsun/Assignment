@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { createPreference, getPreference, deletePreference, updatePreference } from '../actions'
 import TopBar from '../commons/TopBar'
 import LeftMenu from '../commons/LeftMenu'
 import { FaLock } from 'react-icons/lib/fa'
@@ -14,9 +16,25 @@ class EditPreferencesComponent extends Component {
             language: '',
             timezone: '',
             currency: '',
-            profileVisibility: '',
-            message: '',
-            category: ''
+            profileVisibility: 'Everyone',
+            message: 'Everyone',
+            category: 'Enable',
+            _id: this.props.user._id
+        }
+    }
+
+    async componentWillMount() {
+        await this.props.getPreference(this.props.user._id)
+        const {language, timezone, currency, profile_visibility, message, category} = this.props.preference
+        if(this.props.havePreference){
+            await this.setState({
+                language, 
+                timezone, 
+                currency, 
+                profileVisibility: profile_visibility, 
+                message, 
+                category
+            })
         }
     }
 
@@ -31,6 +49,7 @@ class EditPreferencesComponent extends Component {
     setTimezone(data) {
         this.setState({timezone: data})
     }
+
     render() {
         return (
             <div>
@@ -91,7 +110,16 @@ class EditPreferencesComponent extends Component {
                         </SectionDiv>
                         <SepSection/>
                         <SepSection/>
-                        <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end', margin: '0 15px 15px 0'}}><Button>Save Preferences</Button></div>
+                        <div style={{display: 'flex', flex: 1, justifyContent: 'flex-end', margin: '0 15px 15px 0'}}>
+                            {this.props.havePreference?
+                                <div>
+                                    <Button fontColor={'white'} color={'red'} onClick={() => this.props.deletePreference(this.props.preference._id)}>Delete Preferences</Button>
+                                    <Button onClick={() => this.props.updatePreference(this.state)}>Edit Preferences</Button>
+                                </div>
+                            :
+                                <Button onClick={() => this.props.createPreference(this.state)}>Save Preferences</Button>
+                            }
+                        </div>
                     </Container>
                 </OuterContainer>
             </div>
@@ -140,11 +168,11 @@ const Button = styled.button`
     weught: 190px;
     border-radius: 4px;
     border: 1px solid #515C67;
-    color: #515C67;
+    color: ${props => props.fontColor || '#515C67'};
     font-size: 0.8em;
     font-family: 'Hind';
     font-weight: bold;
-    background-color: '#F8F8F8'
+    background-color: ${props => props.color || '#F8F8F8'}
 `
 
 const RadioDiv = styled.div`
@@ -154,4 +182,12 @@ const RadioDiv = styled.div`
     margin: 15px 0 15px 0;
 `
 
-export default EditPreferencesComponent
+const mapStateToProps = state => {
+    return { 
+        user: state.auth.get('user'),
+        preference: state.preference.get('preference'), 
+        havePreference: state.preference.get('havePreference') 
+    }
+}
+
+export default connect(mapStateToProps, { createPreference, getPreference, deletePreference, updatePreference })(EditPreferencesComponent)

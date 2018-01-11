@@ -9,6 +9,8 @@ export default class Dropdown extends Component {
             dropdownActive: false,
             dropdownValue: this.props.value[0]
         }
+
+        this.props.setData(this.props.value[0])
     }
 
     setDropdownValue(value) {
