@@ -20,7 +20,7 @@ export const createPreference = data => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
@@ -36,7 +36,7 @@ export const getPreference = _id => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
@@ -51,7 +51,7 @@ export const deletePreference = _id => {
                 type: DELETE_PREFERENCE
             })  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
@@ -74,7 +74,7 @@ export const updatePreference = data => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }

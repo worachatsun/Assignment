@@ -13,7 +13,7 @@ export const signIn = data => {
             localStorage.setItem('key', result.data.token)
             dispatch(saveUserData(result.data.user))  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
@@ -30,7 +30,7 @@ export const signUp = data => {
             localStorage.setItem('key', result.data.token)
             dispatch(saveUserData(result.data.user))  
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
@@ -43,7 +43,7 @@ export const checkUser = () => {
             })
             dispatch(saveUserData(result.data.user))   
         } catch (error) {
-            alert(error)
+            alert(error.response.data.message)
         }
     }
 }
