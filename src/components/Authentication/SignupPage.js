@@ -35,9 +35,9 @@ class SignupPage extends Component {
                             <Text>Username</Text>
                             <Input type="text" placeholder={'Username'} onChange={e => this.setState({username: e.target.value})}/>
                             <Text>Email</Text>
-                            <Input type="text" placeholder={'Email'} onChange={e => this.setState({email: e.target.value})}/>
+                            <Input type="email" placeholder={'Email'} onChange={e => this.setState({email: e.target.value})}/>
                             <Text>Password</Text>
-                            <Input type="text" placeholder={'Password'} onChange={e => this.setState({password: e.target.value})}/>
+                            <Input type="password" placeholder={'Password'} onChange={e => this.setState({password: e.target.value})}/>
                         </OuterContainer>
                         <OuterContainer>
                             <Text color={'red'}>{this.state.error!==''?this.state.error:''}</Text>
