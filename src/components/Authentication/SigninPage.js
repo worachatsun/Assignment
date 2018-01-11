@@ -19,7 +19,7 @@ class SigninPage extends Component {
         if(this.state.username!==''&this.state.password!=='')
             this.props.signIn(this.state)
         else
-            this.setState({error: 'Something went wrong on Username or Password'})
+            this.setState({error: 'Please insert Username or Password'})
     }
 
     render() {
