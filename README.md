@@ -7,3 +7,5 @@ To using this application. Follow the step below.
 - Second, Start Assignment (https://github.com/worachatsun/Assignment)
 
 - Enjoy using the application.
+
+Don't forget to run mongodb
