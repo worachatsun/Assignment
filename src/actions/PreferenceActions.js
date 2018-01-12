@@ -20,7 +20,10 @@ export const createPreference = data => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }
@@ -36,7 +39,10 @@ export const getPreference = _id => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                console.log(error)
         }
     }
 }
@@ -51,7 +57,10 @@ export const deletePreference = _id => {
                 type: DELETE_PREFERENCE
             })  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }
@@ -74,7 +83,10 @@ export const updatePreference = data => {
                 payload: result.data
             })  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }

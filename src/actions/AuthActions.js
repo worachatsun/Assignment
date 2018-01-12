@@ -13,7 +13,10 @@ export const signIn = data => {
             localStorage.setItem('key', result.data.token)
             dispatch(saveUserData(result.data.user))  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }
@@ -30,7 +33,10 @@ export const signUp = data => {
             localStorage.setItem('key', result.data.token)
             dispatch(saveUserData(result.data.user))  
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }
@@ -43,7 +49,10 @@ export const checkUser = () => {
             })
             dispatch(saveUserData(result.data.user))   
         } catch (error) {
-            alert(error.response.data.message)
+            if (error.message === "Network Error")
+                alert('Maybe the server is down. Please start the API server first or restart the API server.')
+            else
+                alert(error.response.data.message)
         }
     }
 }
